@@ -76,6 +76,14 @@ opt.pumheight = 10
 --show mode
 opt.showmode = true
 
+-- Whitespace visibility
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "» ",
+  trail = "·",
+  nbsp = "␣",
+}
+
 
 
 
