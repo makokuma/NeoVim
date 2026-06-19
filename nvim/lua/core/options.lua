@@ -58,7 +58,7 @@ opt.undofile = true
 opt.updatetime = 250
 
 -- type waiting time(mm sec)
-opt.timeoutlen = 400
+opt.timeoutlen = 1000
 
 opt.clipboard = "unnamedplus"
 

@@ -69,7 +69,7 @@ return {
   -- oil
   {
     "stevearc/oil.nvim",
-    cmd = "Oil"
+    cmd = "Oil",
     keys = {
       -- keymaps
       {

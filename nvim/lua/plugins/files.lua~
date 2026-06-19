@@ -20,6 +20,7 @@ return {
                hidden = true, -- find hidden files
            })
        end,
+       mode = "n",
        desc = "Find files",
       },
       --grep
@@ -29,6 +30,7 @@ return {
            require("telescope.builtin").live_grep()
        end,
        desc = "Live grep",
+       mode = "n",
       },
       {
        "<leader>fb",
@@ -36,6 +38,7 @@ return {
            require("telescope.builtin").buffers()
        end,
        desc = "Find buffers",
+       mode = "n",
       },
       --open old file
       {
@@ -44,6 +47,7 @@ return {
            require("telescope.builtin").oldfiles()
        end,
        desc = "Recent files",
+       mode = "n",
       },
     },
     config = function()
@@ -71,6 +75,7 @@ return {
       {
       "<leader>e",
       "<cmd>Oil<cr>",
+      mode = "n",
       desc = "Open file explorer",
       },
     },
