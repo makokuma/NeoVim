@@ -1,0 +1,77 @@
+-- file search
+
+-- lua/plugins/files.lua
+
+return {
+  -- telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = "Telescope",
+    keys = {
+      -- keymaps
+      -- find files
+      {
+       "<leader>ff",
+       function()
+           require("telescope.builtin").find_files({
+               hidden = true, -- find hidden files
+           })
+       end,
+       desc = "Find files",
+      },
+      --grep
+      {
+       "<leader>fg",
+       function()
+           require("telescope.builtin").live_grep()
+       end,
+       desc = "Live grep",
+      },
+      {
+       "<leader>fb",
+       function()
+           require("telescope.builtin").buffers()
+       end,
+       desc = "Find buffers",
+      },
+      --open old file
+      {
+       "<leader>fr",
+       function()
+           require("telescope.builtin").oldfiles()
+       end,
+       desc = "Recent files",
+      },
+    },
+    config = function()
+      -- setup
+      require("telescope").setup({
+        defaults = {
+          prompt_prefix = "> ",
+          selection_caret = "-> ",
+          path_display = { "truncate" },
+          file_ignore_patterns = {
+            ".git/",
+            "node_modules/",
+          },
+        },
+      })
+     end,
+  },
+
+  -- oil
+  {
+    "stevearc/oil.nvim",
+    keys = {
+      -- keymaps
+    },
+    config = function()
+      -- setup
+    end,
+  },
+}
+
+
