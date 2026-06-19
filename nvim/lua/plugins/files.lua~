@@ -65,11 +65,23 @@ return {
   -- oil
   {
     "stevearc/oil.nvim",
+    cmd = "Oil"
     keys = {
       -- keymaps
+      {
+      "<leader>e",
+      "<cmd>Oil<cr>",
+      desc = "Open file explorer",
+      },
     },
     config = function()
       -- setup
+      require("oil").setup({
+        default_file_explorer = true,
+        view_options = {
+          show_hidden = true,
+        },
+      })
     end,
   },
 }
