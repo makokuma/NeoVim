@@ -1,4 +1,4 @@
-#NeoVim config
+#NeoVim config README
 
 ## Ja
 
