@@ -1,0 +1,86 @@
+-- lua/plugins/git.lua
+
+return {
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("gitsigns").setup({
+        signs = {
+          add = { text = "+" },
+          change = { text = "~" },
+          delete = { text = "_" },
+          topdelete = { text = "‾" },
+          changedelete = { text = "~" },
+        },
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, {
+              buffer = bufnr,
+              desc = desc,
+            })
+          end
+          --show diff on editer
+          map("n", "<leader>gh", gs.preview_hunk, "Preview git hunk")
+          --show commit status
+          map("n", "<leader>gb", gs.blame_line, "Git blame line")
+          --hunk (git add block)
+          map("n", "<leader>gS", gs.stage_hunk, "Stage git hunk")
+          --reset hunk
+          map("n", "<leader>gR", gs.reset_hunk, "Reset git hunk")
+        end,
+      })
+    end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewFileHistory",
+    },
+    keys = {
+      --open another wndow
+      {
+        "<leader>gd",
+        "<cmd>DiffviewOpen<cr>",
+        mode = "n",
+        desc = "Open git diff view",
+      },
+      --close another window
+      {
+        "<leader>gq",
+        "<cmd>DiffviewClose<cr>",
+        mode = "n",
+        desc = "Close git diff view",
+      },
+    },
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = {
+      "LazyGit",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    keys = {
+      {
+        "<leader>gs",
+        "<cmd>LazyGit<cr>",
+        mode = "n",
+        desc = "Open LazyGit",
+      },
+    },
+  },
+}
